@@ -10,7 +10,15 @@ pygame.display.set_caption("test opengl")
 def init_ortho():
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
-    gluOrtho2D(0, 640, 0, 480)
+    gluOrtho2D(0, 1000, 0, 800)
+
+
+def draw_star(x, y, size):
+    glPointSize(size)
+    glBegin(GL_POINTS)
+    glVertex2i(x, y)
+    glVertex2i(x, y)
+    glEnd()
 
 done = False
 init_ortho()
@@ -21,11 +29,13 @@ while not done:
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
     glMatrixMode(GL_MODELVIEW)
     glLoadIdentity()
-    
-    glPointSize(5)
-    glBegin(GL_POINTS)
-    glVertex2i(100, 50)
-    glEnd()
+
+    draw_star(231, 151, 20)
+    draw_star(257, 253, 20)
+    draw_star(303, 180, 15)
+    draw_star(443, 228, 15)
+    draw_star(435, 287, 10)
+    draw_star(385, 315, 20)
 
     pygame.display.flip()
     pygame.time.wait(100)
